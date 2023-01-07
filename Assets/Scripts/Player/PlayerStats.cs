@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // TODO: eveluate properly if collision should damage the player - do this on enemy
-            // TakeDamage(other);
+            TakeDamage(other);
         }
         else if (other.CompareTag("WaterDrop"))
         {
@@ -32,7 +32,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    /*
+    
     private void TakeDamage(GameObject damagingObject) {
         float touchDamage = damagingObject.GetComponent<EnemyStats>().touchDamage;
 
@@ -44,7 +44,6 @@ public class PlayerStats : MonoBehaviour
             Die();
         }
     }
-    */
 
     private void Die()
     {
