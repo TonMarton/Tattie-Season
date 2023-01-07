@@ -34,25 +34,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log("Jump");
         if (context.performed && IsGrounded())
         {
-            Debug.Log("Performed");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
         if (context.canceled && rb.velocity.y > 0f)
         {
-            Debug.Log("Canceled");
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
     }
 
     private bool IsGrounded()
     {
-        Debug.Log("Ground check");
         bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        Debug.Log(isGrounded);
         return isGrounded;
     }
 
