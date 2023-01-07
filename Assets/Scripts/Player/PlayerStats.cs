@@ -29,6 +29,9 @@ public class PlayerStats : MonoBehaviour
         else if (other.CompareTag("WaterDrop"))
         {
             CollectWaterDrop(other);
+        } else if (other.CompareTag("Thorns")){
+            JumpOnAttack();
+            TakeDamage(other);
         }
     }
 
@@ -44,6 +47,10 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    private void JumpOnAttack(){
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 10f);
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5f);
+    }
     private void Die()
     {
         Destroy(this.gameObject);
