@@ -8,27 +8,31 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float startingHealth = 3f;
     [SerializeField] private float maxHealth = 3f;
 
-    private float health;
+    public float health { get; private set; }
+    private LevelManager levelManager;
 
     private void Awake()
     {
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>(); ;
+
         health = startingHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.collider.gameObject;
-        Debug.Log("Collision");
-        Debug.Log(other.tag);
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy Collision");
             // TODO: eveluate properly if collision should damage the player - do this on enemy
-            Debug.Log(other.GetComponent<EnemyStats>());
-            TakeDamage(other);
+            // TakeDamage(other);
+        }
+        else if (other.CompareTag("WaterDrop"))
+        {
+            CollectWaterDrop(other);
         }
     }
 
+    /*
     private void TakeDamage(GameObject damagingObject) {
         float touchDamage = damagingObject.GetComponent<EnemyStats>().touchDamage;
 
@@ -40,9 +44,16 @@ public class PlayerStats : MonoBehaviour
             Die();
         }
     }
+    */
 
     private void Die()
     {
         Debug.Log("Player Dead");
+    }
+
+    private void CollectWaterDrop(GameObject waterDrop)
+    {
+        waterDrop.SetActive(false);
+        levelManager.CollectDrop();
     }
 }
