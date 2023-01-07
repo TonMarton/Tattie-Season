@@ -28,6 +28,18 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &-7915301612884718107
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 9f39ff4fbe41fa548bee2b15ecbb5ab3
+  m_FloatValues:
+    b41b6939992aa52498ff3f6f76b143f3: 22000
+  m_TransitionOverrides: {}
 --- !u!244 &-1130907784445579735
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -52,8 +64,9 @@ AudioMixerController:
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
+  - {fileID: -7915301612884718107}
   - {fileID: 24500006}
-  m_StartSnapshot: {fileID: 24500006}
+  m_StartSnapshot: {fileID: -7915301612884718107}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
@@ -67,9 +80,10 @@ AudioMixerController:
     - 0da5ca4161f05a54eb41f8660743ecc7
     - 76e1460b359d2b3489a3cf28f613db35
     - e2d0d46d9e1662b49bc77f70054b245b
+    - f416fbf77f3ca9e458407ce85f0f03af
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: -7915301612884718107}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -111,10 +125,11 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: LowPass
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: f5f265b28fc9aed4ab4d8de718c0902b
-  m_FloatValues: {}
+  m_FloatValues:
+    b41b6939992aa52498ff3f6f76b143f3: 3432
   m_TransitionOverrides: {}
 --- !u!244 &960797784510129854
 AudioMixerEffectController:
@@ -184,6 +199,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -8411586748532164881}
+  - {fileID: 7802116819957347813}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -202,6 +218,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &5452602009195911639
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Level Audio
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f416fbf77f3ca9e458407ce85f0f03af
+  m_Children: []
+  m_Volume: cd148bc2db31c4242ab99fd7d0bb84a0
+  m_Pitch: 9c87017a430f23a41975b10ed774365f
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 7168278169240541680}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &5835796492475007088
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -235,6 +270,36 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &7168278169240541680
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 3a4f7242d535db74f8a671a08d6bcae5
+  m_EffectName: Attenuation
+  m_MixLevel: 00aacdaf2a9597842a036a030c79dda5
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &7802116819957347813
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: abfa6ccdb86a4e8438cc0b5100c5a2e6
+  m_EffectName: Lowpass Simple
+  m_MixLevel: f36258ed982c20f42b51011a01ee568e
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: b41b6939992aa52498ff3f6f76b143f3
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &8492007882622082318
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -248,6 +313,7 @@ AudioMixerGroupController:
   - {fileID: 2102555223280127344}
   - {fileID: 8889854536796613259}
   - {fileID: 1403256115162790937}
+  - {fileID: 5452602009195911639}
   m_Volume: f3ce20e8232c846429cf051ae3a72dc6
   m_Pitch: c25df633a1b968f46b3416f27d9e320d
   m_Send: 00000000000000000000000000000000
