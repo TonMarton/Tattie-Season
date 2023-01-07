@@ -38,7 +38,6 @@ public class PlayerStats : MonoBehaviour
 
         health = Mathf.Max(health - touchDamage, 0);
         Debug.Log("Health: " + health);
-
         if (health == 0f)
         {
             Die();
@@ -47,6 +46,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Die()
     {
+        Destroy(this.gameObject);
         Debug.Log("Player Dead");
     }
 
