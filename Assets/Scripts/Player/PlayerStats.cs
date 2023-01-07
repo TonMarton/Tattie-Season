@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("Enemy Collision");
             // TODO: eveluate properly if collision should damage the player - do this on enemy
+            Debug.Log(other.GetComponent<EnemyStats>());
             TakeDamage(other);
         }
     }
