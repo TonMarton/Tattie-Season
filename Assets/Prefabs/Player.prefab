@@ -101,7 +101,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speed: 6
-  jumpingPower: 4
+  jumpingPower: 8
 --- !u!114 &3739744327389783355
 MonoBehaviour:
   m_ObjectHideFlags: 0
