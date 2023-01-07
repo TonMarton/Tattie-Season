@@ -1115,10 +1115,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3739744326614024665, guid: 661c370da107b432fa272e4aa084be43, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3739744327389783353, guid: 661c370da107b432fa272e4aa084be43, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1166,14 +1162,6 @@ PrefabInstance:
     - target: {fileID: 3739744327389783354, guid: 661c370da107b432fa272e4aa084be43, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3739744327389783356, guid: 661c370da107b432fa272e4aa084be43, type: 3}
-      propertyPath: speed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3739744327389783356, guid: 661c370da107b432fa272e4aa084be43, type: 3}
-      propertyPath: jumpingPower
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661c370da107b432fa272e4aa084be43, type: 3}
