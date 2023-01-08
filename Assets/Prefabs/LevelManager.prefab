@@ -171,4 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 6878513593931741451}
-  collectCoinSfx: {fileID: 8300000, guid: 1ec9d484cf8277e4abc3ba20967b7f10, type: 3}
+  collectCoinSfx:
+  - {fileID: 8300000, guid: 4afebdd812bd4ac4db14a3fb6f72aa97, type: 3}
+  - {fileID: 8300000, guid: 4e1055a2214a69244a985d3deb3fb2f1, type: 3}
+  - {fileID: 8300000, guid: aae763f574329ca46882f1ebc00c7d3d, type: 3}
+  - {fileID: 8300000, guid: b7328d623e4e0a74aad8308b94a7dfe2, type: 3}
+  - {fileID: 8300000, guid: c3a0261d5ea827e44baf5d910ddc01c8, type: 3}

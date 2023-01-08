@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Animator animator;
     float gravityScale;
 
     private float horizontal;
@@ -39,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? accelaration : deccelaration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        animator.SetFloat("FallVelocity", rb.velocity.y);
+        animator.SetBool("IsGrounded", IsGrounded());
         rb.AddForce(movement * Vector2.right);
         //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
@@ -53,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (rb.velocity.y < 0)
         {
+           
             rb.gravityScale = gravityScale * fallGravityMultiplier;
         }
         else
