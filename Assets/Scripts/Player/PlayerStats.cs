@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float startingHealth = 3f;
     [SerializeField] private float maxHealth = 3f;
 
+
+    [Header("Events")] 
+    public UnityEvent OnHurt; 
+    public UnityEvent OnDeath;
+    
     public float health { get; private set; }
     private LevelManager levelManager;
 
@@ -41,6 +47,7 @@ public class PlayerStats : MonoBehaviour
 
         health = Mathf.Max(health - touchDamage, 0);
         Debug.Log("Health: " + health);
+        OnHurt?.Invoke();
         if (health == 0f)
         {
             Die();
@@ -53,6 +60,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void Die()
     {
+        OnDeath?.Invoke();
         Destroy(this.gameObject);
         Debug.Log("Player Dead");
     }

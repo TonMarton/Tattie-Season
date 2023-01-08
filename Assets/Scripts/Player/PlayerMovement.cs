@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private bool isFacingRight = true;
 
+    public UnityEvent OnJump;
+    
     [Header("Config")]
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpingPower = 16f;
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && IsGrounded())
         {
+            OnJump?.Invoke();
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
 
@@ -45,7 +49,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    
+    //Pete: changed to public for the player footsteps to have access
+    public bool IsGrounded()
     {
         bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         return isGrounded;
@@ -59,6 +65,11 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = localScale;
     }
 
+    public bool IsMoving()
+    {
+        return horizontal != 0f;
+    }
+    
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
