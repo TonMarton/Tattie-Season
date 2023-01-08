@@ -27,28 +27,29 @@ public class MusicLayerSystem : MonoBehaviour
         void Update()
         {
             //testing 
-            /*
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartMusicSystem();
-            }
             
             
-            if (Input.GetKeyDown(KeyCode.A))
+            
+            
+            if (Input.GetKeyDown(KeyCode.G))
             {
                 IncreaseMusicLayer();
             }
             
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.H))
             {
                 DecreaseMusicLayer();
             }
-            
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                Debug.Log("pressed");
+                StartMusicSystem();
+            }
+            if (Input.GetKeyDown(KeyCode.K))
             {
                 StopMusicSystem();
             }
-            */
+            
         }
         
         private IEnumerator FadeInMusicLayer(AudioSource activeSource, float transitionTime)
@@ -90,6 +91,7 @@ public class MusicLayerSystem : MonoBehaviour
         {
             if (Active) return;
             Active = true;
+
             //assumption is that the first layer will always start, while the rest will be muted
             musicSources[0].Play();
             StartCoroutine(FadeInMusicLayer(musicSources[0], transitionInTime));
