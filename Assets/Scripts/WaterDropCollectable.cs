@@ -30,7 +30,7 @@ public class WaterDropCollectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.GetComponent<PlayerMovement>())
+        if (col.gameObject.CompareTag("Player"))
         {
             lvlManager.CollectDrop();
 
