@@ -18,6 +18,9 @@ public class UIAudio : MonoBehaviour
     [SerializeField] private AudioMixerSnapshot lowPassSnapshot;
     [SerializeField] private float transitionTime = 1.5f;
 
+    [SerializeField] private AudioMixer musicMixer;
+    [SerializeField] private AudioMixer sfxMixer;
+    
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -56,5 +59,14 @@ public class UIAudio : MonoBehaviour
     {
         lowPassSnapshot.TransitionTo(transitionTime);
     }
-    
+
+
+    public void SetSfxLvl(float sfxLvl)
+    {
+        sfxMixer.SetFloat("SfxVol", sfxLvl);
+    }
+    public void SetMusicLvl(float musicLvl)
+    {
+        musicMixer.SetFloat("MusicVol", musicLvl);
+    }
 }
