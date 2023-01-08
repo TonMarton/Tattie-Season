@@ -34,7 +34,8 @@ public class PlayerStats : MonoBehaviour
         }
         else if (other.CompareTag("WaterDrop"))
         {
-            CollectWaterDrop(other);
+            //Refer to WaterDropCollectable script
+            //CollectWaterDrop(other);
         } else if (other.CompareTag("Thorns")){
             JumpOnAttack();
             TakeDamage(other);
@@ -65,9 +66,11 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Player Dead");
     }
 
+    /*
     private void CollectWaterDrop(GameObject waterDrop)
     {
         waterDrop.SetActive(false);
         levelManager.CollectDrop();
     }
+    */
 }

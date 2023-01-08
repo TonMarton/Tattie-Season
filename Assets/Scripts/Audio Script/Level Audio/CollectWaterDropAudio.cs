@@ -8,7 +8,7 @@ public class CollectWaterDropAudio : MonoBehaviour
 {
     //The audiosource for this is on the level manaager
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip collectCoinSfx;
+    public AudioClip[] collectCoinSfx;
 
 
     private void Awake()
@@ -19,6 +19,6 @@ public class CollectWaterDropAudio : MonoBehaviour
     public void PlayCollectCoinSfx()
     {
         audioSource.volume = Random.Range(0.8f, 1.0f);
-        audioSource.PlayOneShot(collectCoinSfx);
+        audioSource.PlayOneShot(collectCoinSfx[Random.Range(0, collectCoinSfx.Length)]);
     }
 }
