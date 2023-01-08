@@ -8,8 +8,10 @@ using UnityEngine;
 /// </summary>
 public class WaterDropCollectable : MonoBehaviour
 {
+    [SerializeField] float waterIncreaseAmount = 0.25f;
     private LevelManager lvlManager;
 
+    bool isTriggeredAlready = false;
     private void Awake()
     {
         lvlManager = FindObjectOfType<LevelManager>();
@@ -30,8 +32,9 @@ public class WaterDropCollectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && !isTriggeredAlready)
         {
+            isTriggeredAlready = true;
             lvlManager.CollectDrop();
 
             this.gameObject.SetActive(false);
