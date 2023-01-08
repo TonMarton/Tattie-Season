@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Animator animator;
     float gravityScale;
 
     private float horizontal;
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         float speedDif = targetSpeed - rb.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? accelaration : deccelaration;
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         rb.AddForce(movement * Vector2.right);
         //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
