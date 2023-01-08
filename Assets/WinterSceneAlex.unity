@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
   - component: {fileID: 519420036}
+  - component: {fileID: 519420037}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -971,6 +972,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &519420037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30316d5864a907c4ca0786933c15a076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1220,7 @@ GameObject:
   - component: {fileID: 821868934}
   - component: {fileID: 821868933}
   - component: {fileID: 821868932}
+  - component: {fileID: 821868935}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -1283,6 +1297,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 1, y: 1, z: 0}
+--- !u!114 &821868935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821868931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141a454c794baeb4da90e989328fe988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeTime: 2
+  intensity: 5
 --- !u!1 &936175375
 GameObject:
   m_ObjectHideFlags: 0
@@ -7546,6 +7574,7 @@ GameObject:
   - component: {fileID: 1599266993}
   - component: {fileID: 1599266995}
   - component: {fileID: 1599266996}
+  - component: {fileID: 1599266997}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -7602,6 +7631,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &1599266997
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599266992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1919531672
 GameObject:
   m_ObjectHideFlags: 0
@@ -7980,8 +8026,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
       propertyPath: OnCollectWaterDrop.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 821868935}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShakeCamera
       objectReference: {fileID: 0}
     - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
       propertyPath: OnCollectWaterDrop.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -7990,6 +8056,14 @@ PrefabInstance:
     - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
       propertyPath: OnCollectWaterDrop.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: CinemachineShake, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: OnHurt.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661c370da107b432fa272e4aa084be43, type: 3}
