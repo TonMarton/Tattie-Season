@@ -14,32 +14,34 @@ public class EnemyController : MonoBehaviour
     public float minDist;
     public float speedEnemy;
     public float distance;
+    public float currentPosX;
     // Start is called before the first frame update
     void Start()
     {
         playerPos = player.GetComponent<Transform>();
         currentPos = GetComponent<Transform>().position;
-        initialPosition = transform.position;
+        initialPosition = transform.localPosition;
         direction = -1;
-        maxDist += transform.position.x;
-        minDist -= transform.position.x;
+        maxDist += transform.localPosition.x;
+        minDist = maxDist - 5;
         movingSpeed = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        currentPosX = transform.localPosition.x;
         if(Vector2.Distance(currentPos, playerPos.position) < distance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speedEnemy * 0.1f);
-            minDist = transform.position.x + 3 *-1;
-            maxDist = transform.position.x + 3;
+            transform.localPosition = Vector2.MoveTowards(transform.localPosition, playerPos.position, speedEnemy * 0.1f);
+            minDist = transform.localPosition.x + 3 *-1;
+            maxDist = transform.localPosition.x + 3;
         } else {
            switch (direction)
                 {
                     case -1:
                         // Moving Left
-                        if( transform.position.x > minDist)
+                        if( transform.localPosition.x > minDist)
                             {
                             GetComponent <Rigidbody2D>().velocity = new Vector2(-movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
                             }
@@ -50,7 +52,7 @@ public class EnemyController : MonoBehaviour
                         break;
                     case 1:
                         //Moving Right
-                        if(transform.position.x < maxDist)
+                        if(transform.localPosition.x < maxDist)
                             {
                                 GetComponent <Rigidbody2D>().velocity = new Vector2(movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
                             }
