@@ -888,8 +888,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.008726226, y: 0.008726226, z: -0.000076152806, w: 0.9999239}
-  m_LocalPosition: {x: 13.656875, y: 3.3140333, z: -10.184193}
+  m_LocalRotation: {x: 0.008726226, y: 0.008726225, z: -0.000076152806, w: 0.9999238}
+  m_LocalPosition: {x: 7.5466094, y: 3.312172, z: -10.07757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7341,10 +7341,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7568493402092715188, guid: 8b1d02be346614d2c8b5edde4474178c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7568493402092715189, guid: 8b1d02be346614d2c8b5edde4474178c, type: 3}
       propertyPath: m_Name
       value: WaterDrop
