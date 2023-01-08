@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
         float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-
+        animator.SetFloat("FallVelocity", rb.velocity.y);
+        animator.SetBool("IsGrounded", IsGrounded());
         rb.AddForce(movement * Vector2.right);
         //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (rb.velocity.y < 0)
         {
+           
             rb.gravityScale = gravityScale * fallGravityMultiplier;
         }
         else

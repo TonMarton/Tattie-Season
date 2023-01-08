@@ -887,6 +887,7 @@ GameObject:
   - component: {fileID: 651787939}
   - component: {fileID: 651787942}
   - component: {fileID: 651787941}
+  - component: {fileID: 651787943}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -922,6 +923,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnGamePaused:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &651787940
 Transform:
   m_ObjectHideFlags: 0
@@ -1046,7 +1050,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 651787941}
-  collectCoinSfx: {fileID: 8300000, guid: 1ec9d484cf8277e4abc3ba20967b7f10, type: 3}
+  collectCoinSfx:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &651787943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651787938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca432982e6c3fac4bbfc642a0409832e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTime: 45
+  clockTimeText: 
 --- !u!1001 &1074908088
 PrefabInstance:
   m_ObjectHideFlags: 0
