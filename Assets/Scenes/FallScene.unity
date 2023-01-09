@@ -11272,9 +11272,9 @@ MonoBehaviour:
   - {fileID: 106141890}
   - {fileID: 32264490}
   musicLayers:
-  - {fileID: 8300000, guid: a76da0d25b050424f8f794557a03a663, type: 3}
-  - {fileID: 8300000, guid: df96df01eb987d047937420cf30acb34, type: 3}
-  - {fileID: 8300000, guid: 8978ae51a1cc3b44eb20e6f87d8a0282, type: 3}
+  - {fileID: 8300000, guid: 30db0580e0f4e1d4e99932d24b855772, type: 3}
+  - {fileID: 8300000, guid: bc902e78ef1a4f042a02051cb30ac71c, type: 3}
+  - {fileID: 8300000, guid: 23055ba6128dbcc40b6fc58f6a840ba1, type: 3}
   transitionInTime: 5
   transitionOutTime: 5
   currentLayer: 0

@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerPos == null) return;
+        
         currentPosX = transform.localPosition.x;
         if(Vector2.Distance(currentPos, playerPos.position) < distance)
         {
