@@ -27,6 +27,12 @@ public class UIAudio : MonoBehaviour
         audioSource.clip = feedbackSliderSfxClip;
     }
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+
     //will potentially be the resume button as well 
     public void PlayButtonSfx()
     {
