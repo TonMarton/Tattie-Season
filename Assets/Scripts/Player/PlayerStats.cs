@@ -17,8 +17,9 @@ public class PlayerStats : MonoBehaviour
     public UnityEvent OnDeath;
 
     public float health { get; private set; }
-    private float waterLevel;
 
+    [Header("Debug")] 
+    [SerializeField]private float waterLevel;
     private LevelManager levelManager;
 
     [Header("UI Elements")]
@@ -74,21 +75,19 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // TODO: eveluate properly if collision should damage the player - do this on enemy
-            TakeDamage(other);
+           // TakeDamage(other);
         }
         else if (other.CompareTag("Thorns"))
         {
             JumpOnAttack();
-            TakeDamage(other);
+            TakeDamage( 1);
         }
     }
     
-    private void TakeDamage(GameObject damagingObject)
+    public void TakeDamage( float dmgAmt)
     {
-        float touchDamage = damagingObject.GetComponent<EnemyStats>().touchDamage;
-
-        health = Mathf.Max(health - touchDamage, 0);
-        healthBar.SetHealth(health);
+        health = Mathf.Max(health - dmgAmt, 0);
+        Debug.Log("Health: " + health);
         OnHurt?.Invoke();
         if (health == 0f)
         {
@@ -107,5 +106,15 @@ public class PlayerStats : MonoBehaviour
         OnDeath?.Invoke();
         Destroy(this.gameObject);
         Debug.Log("Player Dead");
+    }
+
+    public float GetStartingWaterLevel()
+    {
+        return startingWaterLevel;
+    }
+
+    public float GetCurrentWaterLevel()
+    {
+        return waterLevel;
     }
 }

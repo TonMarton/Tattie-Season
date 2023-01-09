@@ -21,6 +21,7 @@ public class PlayerPainAudio : MonoBehaviour
     }
     public void PlayHurtSfx()
     {
+        Debug.Log("playing hurt");
         RandomizeAudio();
         audioSource.PlayOneShot(hurtSfx);
     }
