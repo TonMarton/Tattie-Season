@@ -1222,7 +1222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0.008726226, y: 0.008726226, z: -0.000076152806, w: 0.9999239}
-  m_LocalPosition: {x: 12.386961, y: 3.2932537, z: -9.66239}
+  m_LocalPosition: {x: 10.2365265, y: 3.2937782, z: -9.624845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1825,6 +1825,14 @@ PrefabInstance:
     - target: {fileID: 5934864829158864303, guid: 2e9fd3b5ca2374e779d54fab9f735dec, type: 3}
       propertyPath: m_Name
       value: InGameUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934864830016126679, guid: 2e9fd3b5ca2374e779d54fab9f735dec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.5999756
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934864830016126679, guid: 2e9fd3b5ca2374e779d54fab9f735dec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -26.599976
       objectReference: {fileID: 0}
     - target: {fileID: 5934864830462437347, guid: 2e9fd3b5ca2374e779d54fab9f735dec, type: 3}
       propertyPath: m_AnchorMax.x
@@ -31803,6 +31811,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2123185344}
+    - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
+      propertyPath: startingWaterLevel
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8464123704846329804, guid: 661c370da107b432fa272e4aa084be43, type: 3}
       propertyPath: waterDepletionPerSecond
       value: 0.1
