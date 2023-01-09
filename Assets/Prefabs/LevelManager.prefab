@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1117208711415070434}
   - component: {fileID: 6878513593931741451}
   - component: {fileID: 1280790727}
+  - component: {fileID: 5745103313571483189}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -62,6 +63,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnGamePaused:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &6878513593931741451
 AudioSource:
   m_ObjectHideFlags: 0
@@ -177,3 +181,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aae763f574329ca46882f1ebc00c7d3d, type: 3}
   - {fileID: 8300000, guid: b7328d623e4e0a74aad8308b94a7dfe2, type: 3}
   - {fileID: 8300000, guid: c3a0261d5ea827e44baf5d910ddc01c8, type: 3}
+--- !u!114 &5745103313571483189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117208711415070435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca432982e6c3fac4bbfc642a0409832e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTime: 45
+  clockTimeText: 
