@@ -7,42 +7,24 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private float startingHealth = 3f;
-    [SerializeField] private float maxHealth = 3f;
     [SerializeField] private float startingWaterLevel = 1f;
-    [SerializeField] private float maxWaterLevel = 10f;
     [SerializeField] private float waterDepletionPerSecond = 0.1f;
 
     [Header("Events")] 
     public UnityEvent OnHurt; 
     public UnityEvent OnDeath;
-
+    
     public float health { get; private set; }
-
     [Header("Debug")] 
     [SerializeField]private float waterLevel;
     private LevelManager levelManager;
 
-    [Header("UI Elements")]
-    public WaterBar waterBar;
-    public HealthBar healthBar;
-
-    private void Start()
+    private void Awake()
     {
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>(); ;
 
         health = startingHealth;
         waterLevel = startingWaterLevel;
-
-        InitHUD();
-    }
-
-    private void InitHUD()
-    {
-        waterBar.SetMaxWaterLevel(maxWaterLevel);
-        waterBar.SetWaterLevel(waterLevel);
-
-        healthBar.SetMaxHealth(maxHealth);
-        healthBar.SetHealth(health);
     }
 
     private void Update()
@@ -53,7 +35,6 @@ public class PlayerStats : MonoBehaviour
     private void UpdateWaterLevel()
     {
         waterLevel = waterLevel - waterDepletionPerSecond * Time.deltaTime;
-        waterBar.SetWaterLevel(waterLevel);
         if (waterLevel <= 0f)
         {
             Die();
@@ -64,7 +45,7 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Water level: " + waterLevel + ", Amount: " + amount);
         waterLevel += amount;
-        waterBar.SetWaterLevel(waterLevel);
+        //TODO: Update Water Level on the UI
         Debug.Log("Water level: " + waterLevel);
 
     }
@@ -86,6 +67,9 @@ public class PlayerStats : MonoBehaviour
     
     public void TakeDamage( float dmgAmt)
     {
+       
+      
+
         health = Mathf.Max(health - dmgAmt, 0);
         Debug.Log("Health: " + health);
         OnHurt?.Invoke();

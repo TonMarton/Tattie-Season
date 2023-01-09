@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - WaterDrop
   - Thorns
-  - CameraBound
   layers:
   - Default
   - TransparentFX
