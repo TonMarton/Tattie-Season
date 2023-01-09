@@ -52,5 +52,10 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         timer.StartTimer();
     }
+
+    public void Win()
+    {
+        Debug.Log("Won");
+    }
     
 }
