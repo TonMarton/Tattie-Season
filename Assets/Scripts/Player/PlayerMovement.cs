@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private bool isFacingRight = true;
 
+    public bool CanMove { get; set; } = true;
+    
     public UnityEvent OnJump;
     
     [Header("Config")]
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!CanMove) return;
+        
         float targetSpeed = horizontal * speed;
         float speedDif = targetSpeed - rb.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? accelaration : deccelaration;
@@ -94,6 +98,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 localScale = transform.localScale;
         localScale.x *= -1f;
         transform.localScale = localScale;
+    }
+
+    public void PlayerDeath()
+    {
+        CanMove = false; 
+        animator.Play("PlayerDie");
     }
 
     public bool IsMoving()
