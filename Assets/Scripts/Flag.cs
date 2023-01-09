@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Flag : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Flag : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            levelManager.Win();
+            SceneManager.LoadScene(0);
         }
     }
 }
