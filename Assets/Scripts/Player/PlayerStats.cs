@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class PlayerStats : MonoBehaviour
 
     public void IncreaseWaterLevel(float amount)
     {
-        Debug.Log("Water level: " + waterLevel + ", Amount: " + amount);
+       // Debug.Log("Water level: " + waterLevel + ", Amount: " + amount);
         waterLevel += amount;
         //TODO: Update Water Level on the UI
         Debug.Log("Water level: " + waterLevel);
@@ -88,10 +89,18 @@ public class PlayerStats : MonoBehaviour
     private void Die()
     {
         OnDeath?.Invoke();
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        StartCoroutine(WaitThenDie());
         Debug.Log("Player Dead");
     }
 
+    private IEnumerator WaitThenDie()
+    {
+        yield return new WaitForSeconds(2.5f);
+        this.gameObject.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //restart game?
+    }
     public float GetStartingWaterLevel()
     {
         return startingWaterLevel;

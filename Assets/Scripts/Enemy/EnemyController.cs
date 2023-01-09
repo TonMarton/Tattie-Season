@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     public float speedEnemy;
     public float distance;
     public float currentPosX;
+
+    private SpriteRenderer sr;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class EnemyController : MonoBehaviour
         maxDist += transform.localPosition.x;
         minDist = maxDist - 5;
         movingSpeed = 2f;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -45,6 +48,7 @@ public class EnemyController : MonoBehaviour
                 {
                     case -1:
                         // Moving Left
+                        sr.flipX = false;
                         if( transform.localPosition.x > minDist)
                         {
                             GetComponent <Rigidbody2D>().velocity = new Vector2(-movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
@@ -55,6 +59,7 @@ public class EnemyController : MonoBehaviour
                         }
                         break;
                     case 1:
+                        sr.flipX = true;
                         //Moving Right
                         if(transform.localPosition.x < maxDist)
                         {
