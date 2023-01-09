@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().gameObject;
         playerPos = player.GetComponent<Transform>();
         currentPos = GetComponent<Transform>().position;
         initialPosition = transform.localPosition;
@@ -44,26 +46,28 @@ public class EnemyController : MonoBehaviour
                     case -1:
                         // Moving Left
                         if( transform.localPosition.x > minDist)
-                            {
+                        {
                             GetComponent <Rigidbody2D>().velocity = new Vector2(-movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
-                            }
+                        }
                         else
-                            {
+                        {
                             direction = 1;
-                            }
+                        }
                         break;
                     case 1:
                         //Moving Right
                         if(transform.localPosition.x < maxDist)
-                            {
-                                GetComponent <Rigidbody2D>().velocity = new Vector2(movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
-                            }
+                        {
+                            GetComponent <Rigidbody2D>().velocity = new Vector2(movingSpeed,GetComponent<Rigidbody2D>().velocity.y);
+                        }
                         else
-                            {
-                                direction = -1;
-                            }
-                    break;
+                        {
+                            direction = -1;
+                        }
+                        break;
                 }
         }
     }
+
+   
 }

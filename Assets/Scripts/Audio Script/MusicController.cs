@@ -9,7 +9,6 @@ public class MusicController : MonoBehaviour
     [SerializeField] private MusicLayerSystem musicLayerSystem;
 
     [SerializeField] private PlayerStats ps;
-    [SerializeField] private MusicStates musicStates;
 
      private float waterLevelCheckTime = 7.5f;
     private float timer; 
@@ -22,7 +21,6 @@ public class MusicController : MonoBehaviour
 
     private void Start()
     {
-        musicStates = MusicStates.Lvl1; 
     }
 /// <summary>
 /// Game starts with no music. As you continue being at 50% or more water level, the music will increase intensity. else it will decrease 
@@ -39,7 +37,6 @@ public class MusicController : MonoBehaviour
             if(!musicLayerSystem.Active) musicLayerSystem.StartMusicSystem();
             else
             {
-                Debug.Log("increasing!");
                 musicLayerSystem.IncreaseMusicLayer();
             }
             
@@ -47,7 +44,6 @@ public class MusicController : MonoBehaviour
         else
         {
             //decrease 
-            Debug.Log("decreasing!");
             musicLayerSystem.DecreaseMusicLayer();
         }
 
@@ -59,12 +55,4 @@ public class MusicController : MonoBehaviour
 }
 }
 
-public enum MusicStates
-{
-  Lvl1, //nothing is playing 
-  Lvl2, // layer 1 is playing
-  Lvl3, //layer 2 is playing
-  Lvl4, //layer 3 is playing, full level
-          
-}
 
