@@ -6,11 +6,9 @@ using UnityEngine;
 public class MusicTriggerZone : MonoBehaviour
 {
     [SerializeField] private MusicController musicController;
-    private bool playerEntered = false;
 
     private void Awake()
     {
-        playerEntered = false;
         if (musicController == null)
             musicController = FindObjectOfType<MusicController>();
     }
