@@ -56,20 +56,21 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // TODO: eveluate properly if collision should damage the player - do this on enemy
-            TakeDamage(other);
+           // TakeDamage(other);
         }
         else if (other.CompareTag("Thorns"))
         {
             JumpOnAttack();
-            TakeDamage(other);
+            TakeDamage( 1);
         }
     }
     
-    private void TakeDamage(GameObject damagingObject)
+    public void TakeDamage( float dmgAmt)
     {
-        float touchDamage = damagingObject.GetComponent<EnemyStats>().touchDamage;
+       
+      
 
-        health = Mathf.Max(health - touchDamage, 0);
+        health = Mathf.Max(health - dmgAmt, 0);
         Debug.Log("Health: " + health);
         OnHurt?.Invoke();
         if (health == 0f)
