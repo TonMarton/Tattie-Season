@@ -15,7 +15,8 @@ public class PlayerStats : MonoBehaviour
     public UnityEvent OnDeath;
     
     public float health { get; private set; }
-    private float waterLevel;
+    [Header("Debug")] 
+    [SerializeField]private float waterLevel;
     private LevelManager levelManager;
 
     private void Awake()
@@ -88,5 +89,15 @@ public class PlayerStats : MonoBehaviour
         OnDeath?.Invoke();
         Destroy(this.gameObject);
         Debug.Log("Player Dead");
+    }
+
+    public float GetStartingWaterLevel()
+    {
+        return startingWaterLevel;
+    }
+
+    public float GetCurrentWaterLevel()
+    {
+        return waterLevel;
     }
 }
