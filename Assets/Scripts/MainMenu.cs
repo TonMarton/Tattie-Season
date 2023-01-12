@@ -27,27 +27,24 @@ public class MainMenu : MonoBehaviour
 
         playButton.RegisterCallback<MouseOverEvent>((type) => OnButtonHover());
         quitButton.RegisterCallback<MouseOverEvent>((type) => OnButtonHover());
-
     }
 
     private void OnButtonHover() {
         playButtonHoverSound.Invoke();
     }
 
-    private void OnButtonClicked() {
+    private void PlayButtonClickedSound() {
         playButtonClickSound.Invoke();
     }
 
     private void OnPlayButtonClicked()
     {
-        OnButtonClicked();
+        PlayButtonClickedSound();
         SceneManager.LoadScene(1);
     }
 
     private void OnQuitButtonClicked()
     {
-        OnButtonClicked();
-
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif

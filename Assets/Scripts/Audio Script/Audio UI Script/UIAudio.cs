@@ -24,7 +24,6 @@ public class UIAudio : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null) Debug.Log("this is null vbruv");
         audioSource.clip = feedbackSliderSfxClip;
     }
 
@@ -43,13 +42,7 @@ public class UIAudio : MonoBehaviour
     
     public void PlayHoverButtonSfx()
     {
-        Debug.Log("attempting to play hover");
-        if (audioSource == null)
-        {
-            Debug.Log("bro its null");
-        }
         audioSource.PlayOneShot(hoverButtonSfxClip);
-
     }
     
     public void PlayFeedbackSliderSfx()
