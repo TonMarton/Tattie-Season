@@ -43,7 +43,6 @@ public class UIAudio : MonoBehaviour
     public void PlayHoverButtonSfx()
     {
         audioSource.PlayOneShot(hoverButtonSfxClip);
-
     }
     
     public void PlayFeedbackSliderSfx()
