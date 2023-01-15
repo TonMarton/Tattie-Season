@@ -22,13 +22,12 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]private float waterLevel;
     private LevelManager levelManager;
 
-    [Header("UI Elements")]
-    public WaterBar waterBar;
-    public HealthBar healthBar;
+    private HUD hud;
 
     private void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        hud = levelManager.gameUi.hud;
 
         health = startingHealth;
         waterLevel = startingWaterLevel;
@@ -38,11 +37,8 @@ public class PlayerStats : MonoBehaviour
 
     private void InitHUD()
     {
-        waterBar.SetMaxWaterLevel(maxWaterLevel);
-        waterBar.SetWaterLevel(waterLevel);
-
-        healthBar.SetMaxHealth(maxHealth);
-        healthBar.SetHealth(health);
+        hud.ChangeWaterBarValue(waterLevel / maxWaterLevel);
+        hud.ChangeHealthBarValue(health / maxHealth);
     }
 
     private void Update()
@@ -53,7 +49,7 @@ public class PlayerStats : MonoBehaviour
     private void UpdateWaterLevel()
     {
         waterLevel = waterLevel - waterDepletionPerSecond * Time.deltaTime;
-        waterBar.SetWaterLevel(waterLevel);
+        hud.ChangeWaterBarValue(waterLevel / maxWaterLevel);
         if (waterLevel <= 0f)
         {
             Die();
@@ -64,7 +60,7 @@ public class PlayerStats : MonoBehaviour
     {
        // Debug.Log("Water level: " + waterLevel + ", Amount: " + amount);
         waterLevel += amount;
-        waterBar.SetWaterLevel(waterLevel);
+        hud.ChangeWaterBarValue(waterLevel / maxWaterLevel);
         Debug.Log("Water level: " + waterLevel);
 
     }
@@ -88,8 +84,8 @@ public class PlayerStats : MonoBehaviour
     {
        
         health = Mathf.Max(health - dmgAmt, 0);
-        healthBar.SetHealth(health);
-      
+        hud.ChangeHealthBarValue(health / maxHealth);
+
         OnHurt?.Invoke();
         if (health == 0f)
         {

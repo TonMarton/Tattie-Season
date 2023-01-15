@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext context)
     {
+        Debug.Log("Pause pressed");
         if (isGamePaused)
         {
             ResumeGame();
