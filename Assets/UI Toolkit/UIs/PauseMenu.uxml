@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Common.uss?fileID=7433441132597879392&amp;guid=3aaca9a5c0e3040698dfa2cfb42640ee&amp;type=3#Common" />
+    <ui:VisualElement name="pause-bg">
+        <ui:VisualElement name="pause-panel">
+            <ui:GroupBox name="pause-main-container" class="center" style="display: flex;">
+                <ui:Button text="Settings" display-tooltip-when-elided="true" name="pause-settings-button" />
+                <ui:Button text="Quit" display-tooltip-when-elided="true" name="pause-quit-button" />
+                <ui:Button text="Resume" display-tooltip-when-elided="true" name="pause-resume-button" />
+            </ui:GroupBox>
+            <ui:GroupBox name="pause-settings-container" style="display: none;">
+                <ui:Label text="Settings" display-tooltip-when-elided="true" name="pause-settings-title" />
+                <ui:Toggle label="Toggle" name="timer-toggle" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="0.5" high-value="1" name="sfx-slider" style="width: 300px;" />
+                <ui:Slider picking-mode="Ignore" label="Slider" value="0.5" high-value="1" page-size="0" show-input-field="false" direction="Horizontal" inverted="false" name="music-slider" style="width: 300px;" />
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -13,30 +12,32 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float maxWaterLevel = 10f;
     [SerializeField] private float waterDepletionPerSecond = 0.1f;
 
-    [Header("Events")] 
-    public UnityEvent OnHurt; 
+    [Header("Events")]
+    public UnityEvent OnHurt;
     public UnityEvent OnDeath;
 
     public float health { get; private set; }
-    [Header("Debug")] 
-    [SerializeField]private float waterLevel;
+    [Header("Debug")]
+    [SerializeField] private float waterLevel;
     private LevelManager levelManager;
 
     private HUD hud;
 
+    private void Awake()
+    {
+        health = startingHealth;
+        waterLevel = startingWaterLevel;
+    }
+
     private void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        hud = levelManager.gameUi.hud;
-
-        health = startingHealth;
-        waterLevel = startingWaterLevel;
-
         InitHUD();
     }
 
     private void InitHUD()
     {
+        hud = levelManager.gameUi.hud;
         hud.ChangeWaterBarValue(waterLevel / maxWaterLevel);
         hud.ChangeHealthBarValue(health / maxHealth);
     }
@@ -48,7 +49,7 @@ public class PlayerStats : MonoBehaviour
 
     private void UpdateWaterLevel()
     {
-        waterLevel = waterLevel - waterDepletionPerSecond * Time.deltaTime;
+        waterLevel -= waterDepletionPerSecond * Time.deltaTime;
         hud.ChangeWaterBarValue(waterLevel / maxWaterLevel);
         if (waterLevel <= 0f)
         {
@@ -58,7 +59,7 @@ public class PlayerStats : MonoBehaviour
 
     public void IncreaseWaterLevel(float amount)
     {
-       // Debug.Log("Water level: " + waterLevel + ", Amount: " + amount);
+        // Debug.Log("Water level: " + waterLevel + ", Amount: " + amount);
         waterLevel += amount;
         hud.ChangeWaterBarValue(waterLevel / maxWaterLevel);
         Debug.Log("Water level: " + waterLevel);
@@ -71,18 +72,18 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // TODO: eveluate properly if collision should damage the player - do this on enemy
-           // TakeDamage(other);
+            // TakeDamage(other);
         }
         else if (other.CompareTag("Thorns"))
         {
             JumpOnAttack();
-            TakeDamage( 1);
+            TakeDamage(1);
         }
     }
-    
-    public void TakeDamage( float dmgAmt)
+
+    public void TakeDamage(float dmgAmt)
     {
-       
+
         health = Mathf.Max(health - dmgAmt, 0);
         hud.ChangeHealthBarValue(health / maxHealth);
 
@@ -95,8 +96,8 @@ public class PlayerStats : MonoBehaviour
 
     private void JumpOnAttack()
     {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 10f);
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5f);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 10f);
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5f);
     }
 
     private void Die()

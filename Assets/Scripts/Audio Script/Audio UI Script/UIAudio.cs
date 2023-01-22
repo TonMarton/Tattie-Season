@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 /// <summary>
@@ -32,13 +29,11 @@ public class UIAudio : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-
     //will potentially be the resume button as well 
     public void PlayButtonSfx()
     {
         audioSource.PlayOneShot(playButtonSfxClip);
     }
-    
     
     public void PlayHoverButtonSfx()
     {
@@ -70,6 +65,7 @@ public class UIAudio : MonoBehaviour
     {
         sfxMixer.SetFloat("SfxVol", sfxLvl);
     }
+
     public void SetMusicLvl(float musicLvl)
     {
         musicMixer.SetFloat("MusicVol", musicLvl);

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="HUD" src="project://database/Assets/UI%20Toolkit/UIs/HUD.uxml?fileID=9197481963319205126&amp;guid=db41897dea16c4c3b8c063caf2b4885b&amp;type=3#HUD" />
+    <ui:Template name="PauseMenu" src="project://database/Assets/UI%20Toolkit/UIs/PauseMenu.uxml?fileID=9197481963319205126&amp;guid=bdb9678386dc64b848e0dc8c951827d8&amp;type=3#PauseMenu" />
+    <Style src="project://database/Assets/UI%20Toolkit/Common.uss?fileID=7433441132597879392&amp;guid=3aaca9a5c0e3040698dfa2cfb42640ee&amp;type=3#Common" />
+    <ui:Instance template="HUD" name="HUD" />
+    <ui:Instance template="PauseMenu" name="PauseMenu" />
+</ui:UXML>
