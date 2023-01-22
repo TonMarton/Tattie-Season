@@ -8,25 +8,24 @@ using UnityEngine;
 /// </summary>
 public class WaterDropCollectable : MonoBehaviour
 {
-    [SerializeField] float waterIncreaseAmount = 0.25f;
-    private LevelManager lvlManager;
+	[SerializeField] float waterIncreaseAmount = 0.25f;
+	private LevelManager lvlManager;
 
-    bool isTriggeredAlready = false;
-    private void Awake()
-    {
-        lvlManager = FindObjectOfType<LevelManager>();
-    }
+	bool isTriggeredAlready = false;
+	private void Awake()
+	{
+		lvlManager = FindObjectOfType<LevelManager>();
+	}
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Player") && !isTriggeredAlready)
-        {
-            isTriggeredAlready = true;
-            lvlManager.CollectDrop();
+	private void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.CompareTag("Player") && !isTriggeredAlready) {
+			isTriggeredAlready = true;
+			lvlManager.CollectDrop();
 
-            this.gameObject.SetActive(false);
+			this.gameObject.SetActive(false);
 
-            col.gameObject.GetComponent<PlayerStats>().IncreaseWaterLevel(waterIncreaseAmount);
-        }
-    }
+			col.gameObject.GetComponent<PlayerStats>().IncreaseWaterLevel(waterIncreaseAmount);
+		}
+	}
 }

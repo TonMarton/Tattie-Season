@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Flag : MonoBehaviour
 {
-    public LevelManager levelManager;
+	public LevelManager levelManager;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.CompareTag("Player")) {
+			SceneManager.LoadScene(0);
+		}
+	}
 }

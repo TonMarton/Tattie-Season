@@ -2,24 +2,24 @@ using UnityEngine;
 
 class Timer
 {
-    private HUD hud;
+	private HUD hud;
 
-    public bool isActive = false;
-    private float time = 0f;
+	public bool isActive = false;
+	private float time = 0f;
 
-    public Timer(HUD hud) {
-        this.hud = hud;
+	public Timer(HUD hud)
+	{
+		this.hud = hud;
 
-        hud.ChangeTimeText(time);
-    }
+		hud.ChangeTimeText(time);
+	}
 
-    public void UpdateTime()
-    {
-        if (isActive)
-        {
-            time += Time.deltaTime;
+	public void UpdateTime()
+	{
+		if (isActive) {
+			time += Time.deltaTime;
 
-            hud.ChangeTimeText(time);
-        }
-    }
+			hud.ChangeTimeText(time);
+		}
+	}
 }

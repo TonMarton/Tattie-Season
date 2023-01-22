@@ -6,104 +6,97 @@ using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
-    public delegate void ResumeGameDelegate();
-    public delegate void GoToMainMenuDelegate();
+	public delegate void ResumeGameDelegate();
+	public delegate void GoToMainMenuDelegate();
 
-    public int DropsCollected { get; private set; } = 0;
+	public int DropsCollected { get; private set; } = 0;
 
-    public UnityEvent OnCollectWaterDrop;
-    public UnityEvent OnGamePaused;
+	public UnityEvent OnCollectWaterDrop;
+	public UnityEvent OnGamePaused;
 
-    public Settings settings;
-    public GameUI gameUi
-    {
-        get; private set;
-    }
-    private Timer timer;
+	public Settings settings;
+	public GameUI gameUi {
+		get; private set;
+	}
+	private Timer timer;
 
-    private InputAction pauseAction;
-    private bool isGamePaused = false;
+	private InputAction pauseAction;
+	private bool isGamePaused = false;
 
-    private void Awake()
-    {
-        settings = new Settings();
-        gameUi = new GameUI(
-            gameObject.GetComponentInChildren<UIDocument>(),
-            settings,
-            ResumeGame,
-            GoToMainMenu
-        );
-        timer = new Timer(gameUi.hud);
-    }
+	private void Awake()
+	{
+		settings = new Settings();
+		gameUi = new GameUI(
+			gameObject.GetComponentInChildren<UIDocument>(),
+			settings,
+			ResumeGame,
+			GoToMainMenu
+		);
+		timer = new Timer(gameUi.hud);
+	}
 
-    private void Start()
-    {
-        pauseAction = GameObject.Find("Player").GetComponent<PlayerInput>().actions.FindAction("Pause");
-        pauseAction.performed += GamePausedResumed;
-        timer.isActive = true;
-    }
+	private void Start()
+	{
+		pauseAction = GameObject.Find("Player").GetComponent<PlayerInput>().actions.FindAction("Pause");
+		pauseAction.performed += GamePausedResumed;
+		timer.isActive = true;
+	}
 
-    private void Update()
-    {
-        timer.UpdateTime();
-    }
+	private void Update()
+	{
+		timer.UpdateTime();
+	}
 
-    public void CollectDrop()
-    {
-        OnCollectWaterDrop?.Invoke();
-        DropsCollected += 1;
-        Debug.Log("DropsCollected: " + DropsCollected);
-    }
+	public void CollectDrop()
+	{
+		OnCollectWaterDrop?.Invoke();
+		DropsCollected += 1;
+		Debug.Log("DropsCollected: " + DropsCollected);
+	}
 
-    private void GamePausedResumed(InputAction.CallbackContext context)
-    {
-        if (isGamePaused)
-        {
-            if (gameUi.pauseMenu.IsMainPageActive())
-            {
-                ResumeGame();
-            }
-            else
-            {
-                gameUi.pauseMenu.GoToMainPage();
-            }
-        }
-        else
-        {
-            PauseGame();
-        }
-    }
+	private void GamePausedResumed(InputAction.CallbackContext context)
+	{
+		if (isGamePaused) {
+			if (gameUi.pauseMenu.IsMainPageActive()) {
+				ResumeGame();
+			} else {
+				gameUi.pauseMenu.GoToMainPage();
+			}
+		} else {
+			PauseGame();
+		}
+	}
 
-    public void PauseGame()
-    {
-        isGamePaused = true;
-        OnGamePaused?.Invoke();
-        gameUi.pauseMenu.TogglePauseMenu();
-        timer.isActive = false;
-        Time.timeScale = 0;
-    }
+	public void PauseGame()
+	{
+		isGamePaused = true;
+		OnGamePaused?.Invoke();
+		gameUi.pauseMenu.TogglePauseMenu();
+		timer.isActive = false;
+		Time.timeScale = 0;
+	}
 
-    public void ResumeGame()
-    {
-        isGamePaused = false;
-        gameUi.pauseMenu.TogglePauseMenu();
-        Time.timeScale = 1;
-        timer.isActive = true;
-    }
+	public void ResumeGame()
+	{
+		isGamePaused = false;
+		gameUi.pauseMenu.TogglePauseMenu();
+		Time.timeScale = 1;
+		timer.isActive = true;
+	}
 
-    public void Win()
-    {
-        Debug.Log("Won");
-    }
+	public void Win()
+	{
+		Debug.Log("Won");
+	}
 
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
+	public void GoToMainMenu()
+	{
+		SceneManager.LoadScene(0);
+	}
 
-    private void OnDestroy()
-    {
-        gameUi.UnsubscribeFromEvents();
-        pauseAction.performed -= GamePausedResumed;
-    }
+	private void OnDestroy()
+	{
+		gameUi.UnsubscribeFromEvents();
+		pauseAction.performed -= GamePausedResumed;
+	}
 }

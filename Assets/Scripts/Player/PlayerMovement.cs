@@ -7,112 +7,104 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public Rigidbody2D rb;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    public Animator animator;
-    float gravityScale;
+	public Rigidbody2D rb;
+	public Transform groundCheck;
+	public LayerMask groundLayer;
+	public Animator animator;
+	float gravityScale;
 
-    private float horizontal;
-    private bool isFacingRight = true;
+	private float horizontal;
+	private bool isFacingRight = true;
 
-    public bool CanMove { get; set; } = true;
-    
-    public UnityEvent OnJump;
-    
-    [Header("Config")]
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float accelaration = 0.2f;
-    [SerializeField] private float deccelaration = 0.4f;
-    [SerializeField] private float velPower = 2f;
-    [SerializeField] private float jumpingPower = 16f;
-    [SerializeField] private float fallGravityMultiplier = 2f;
+	public bool CanMove { get; set; } = true;
+
+	public UnityEvent OnJump;
+
+	[Header("Config")]
+	[SerializeField] private float speed = 8f;
+	[SerializeField] private float accelaration = 0.2f;
+	[SerializeField] private float deccelaration = 0.4f;
+	[SerializeField] private float velPower = 2f;
+	[SerializeField] private float jumpingPower = 16f;
+	[SerializeField] private float fallGravityMultiplier = 2f;
 
 
-    void Start()
-    {
-        gravityScale = rb.gravityScale;
-    }
+	void Start()
+	{
+		gravityScale = rb.gravityScale;
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(!CanMove) return;
-        
-        float targetSpeed = horizontal * speed;
-        float speedDif = targetSpeed - rb.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? accelaration : deccelaration;
-        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+	// Update is called once per frame
+	void Update()
+	{
+		if (!CanMove) return;
 
-        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        animator.SetFloat("FallVelocity", rb.velocity.y);
-        animator.SetBool("IsGrounded", IsGrounded());
-        rb.AddForce(movement * Vector2.right);
-        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+		float targetSpeed = horizontal * speed;
+		float speedDif = targetSpeed - rb.velocity.x;
+		float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? accelaration : deccelaration;
+		float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
-        if (!isFacingRight && horizontal > 0f)
-        {
-            Flip();
-        }
-        else if (isFacingRight && horizontal < 0f)
-        {
-            Flip();
-        }
+		animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+		animator.SetFloat("FallVelocity", rb.velocity.y);
+		animator.SetBool("IsGrounded", IsGrounded());
+		rb.AddForce(movement * Vector2.right);
+		//rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
 
-        if (rb.velocity.y < 0)
-        {
-           
-            rb.gravityScale = gravityScale * fallGravityMultiplier;
-        }
-        else
-        {
-            rb.gravityScale = gravityScale;
-        }
-    }
+		if (!isFacingRight && horizontal > 0f) {
+			Flip();
+		} else if (isFacingRight && horizontal < 0f) {
+			Flip();
+		}
 
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (context.performed && IsGrounded())
-        {
-            OnJump?.Invoke();
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
+		if (rb.velocity.y < 0) {
 
-        if (context.canceled && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-    }
+			rb.gravityScale = gravityScale * fallGravityMultiplier;
+		} else {
+			rb.gravityScale = gravityScale;
+		}
+	}
 
-    
-    //Pete: changed to public for the player footsteps to have access
-    public bool IsGrounded()
-    {
-        bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        return isGrounded;
-    }
+	public void Jump(InputAction.CallbackContext context)
+	{
+		if (context.performed && IsGrounded()) {
+			OnJump?.Invoke();
+			rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+		}
 
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1f;
-        transform.localScale = localScale;
-    }
+		if (context.canceled && rb.velocity.y > 0f) {
+			rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+		}
+	}
 
-    public void PlayerDeath()
-    {
-        CanMove = false; 
-        animator.Play("PlayerDie");
-    }
 
-    public bool IsMoving()
-    {
-        return horizontal != 0f;
-    }
-    
-    public void Move(InputAction.CallbackContext context)
-    {
-        horizontal = context.ReadValue<Vector2>().x;
-    }
+	//Pete: changed to public for the player footsteps to have access
+	public bool IsGrounded()
+	{
+		bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+		return isGrounded;
+	}
+
+	private void Flip()
+	{
+		isFacingRight = !isFacingRight;
+		Vector3 localScale = transform.localScale;
+		localScale.x *= -1f;
+		transform.localScale = localScale;
+	}
+
+	public void PlayerDeath()
+	{
+		CanMove = false;
+		animator.Play("PlayerDie");
+	}
+
+	public bool IsMoving()
+	{
+		return horizontal != 0f;
+	}
+
+	public void Move(InputAction.CallbackContext context)
+	{
+		horizontal = context.ReadValue<Vector2>().x;
+	}
 }

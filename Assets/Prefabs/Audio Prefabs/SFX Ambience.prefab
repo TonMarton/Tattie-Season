@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1988001772296185320}
+  - component: {fileID: 5944272610815171192}
   - component: {fileID: 1988001772296185321}
   m_Layer: 0
   m_Name: SFX Ambience
@@ -33,6 +34,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5944272610815171192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988001772296185327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b52ff92be5cd2c418c0b1e18525bea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1988001772296185321}
+  playButtonSfxClip: {fileID: 8300000, guid: e26bcf7eb79987545bfcb5cca7f3c7ea, type: 3}
+  hoverButtonSfxClip: {fileID: 8300000, guid: a00cbf5a497aaf3448313f8dfd0e9d52, type: 3}
+  feedbackSliderSfxClip: {fileID: 0}
+  defaultSnapshot: {fileID: -7915301612884718107, guid: fb17c783349269d44af5fd72e47cdb8c, type: 2}
+  lowPassSnapshot: {fileID: 24500006, guid: fb17c783349269d44af5fd72e47cdb8c, type: 2}
+  transitionTime: 1.5
+  musicMixer: {fileID: 24100000, guid: fb17c783349269d44af5fd72e47cdb8c, type: 2}
+  sfxMixer: {fileID: 24100000, guid: fb17c783349269d44af5fd72e47cdb8c, type: 2}
 --- !u!82 &1988001772296185321
 AudioSource:
   m_ObjectHideFlags: 0
