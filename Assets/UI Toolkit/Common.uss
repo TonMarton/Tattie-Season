@@ -1,3 +1,9 @@
+* {
+    -unity-font: url('project://database/Assets/Sprites/UI/Fonts/FT88-Bold.otf?fileID=12800000&guid=5d9e2c09417f74983821c7f0bf43ec29&type=3#FT88-Bold');
+    -unity-font-definition: url('project://database/Assets/Sprites/UI/Fonts/FT88-Bold%20SDF%201.asset?fileID=11400000&guid=6b40dc90b0be84005b8c352e57d343b9&type=2#FT88-Bold SDF 1');
+    color: rgb(255, 255, 255);
+}
+
 Button {
     border-left-width: 0;
     border-right-width: 0;
@@ -5,13 +11,78 @@ Button {
     border-bottom-width: 0;
 }
 
+.center {
+    align-items: center;
+}
+
+.unity-toggle__input {
+    width: 69px;
+    height: 69px;
+}
+
+.unity-toggle__checkmark {
+    background-image: url('project://database/Assets/Sprites/UI/toggle_off_69x69.png?fileID=21300000&guid=8765b2647809a4ff282f5943a87a5836&type=3#toggle_off_69x69');
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+}
+
+.unity-toggle > .unity-toggle__input:checked > .unity-toggle__checkmark {
+    background-image: url('project://database/Assets/Sprites/UI/toggle_on_69x69.png?fileID=21300000&guid=81622412817bd402dbe15d35fc338ab0&type=3#toggle_on_69x69');
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+.unity-base-slider--horizontal .unity-base-slider__input {
+    width: 276px;
+    height: 30px;
+}
+
+.unity-base-slider--horizontal {
+    margin-bottom: 40px;
+}
+
+.unity-base-slider__input:focus .unity-base-slider__dragger-border {
+}
+
+.unity-base-slider__dragger {
+    background-image: url('project://database/Assets/Sprites/UI/slider_button_39x78.png?fileID=21300000&guid=39633b3247af8436ab09f6be20e5a9ef&type=3#slider_button_39x78');
+    position: absolute;
+    width: 39px;
+    height: 78px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    top: auto;
+}
+
+.unity-base-slider__tracker {
+    background-image: url('project://database/Assets/Sprites/UI/slider_276x30.png?fileID=21300000&guid=c8af0ec45babb4d4bab57bcdbbd549b4&type=3#slider_276x30');
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.unity-base-field--no-label {
+}
+
 #mainmenu {
     background-image: url('project://database/Assets/Sprites/Backgrounds/winter_background_0107_1748.png?fileID=21300000&guid=4f2b42368771a49a696362cc4ce4b697&type=3#winter_background_0107_1748');
     width: 100%;
     height: 100%;
     -unity-background-scale-mode: scale-and-crop;
-    -unity-font: url('project://database/Assets/Sprites/UI/Fonts/FT88-Bold.otf?fileID=12800000&guid=5d9e2c09417f74983821c7f0bf43ec29&type=3#FT88-Bold');
-    -unity-font-definition: url('project://database/Assets/Sprites/UI/Fonts/FT88-Bold%20SDF%201.asset?fileID=11400000&guid=6b40dc90b0be84005b8c352e57d343b9&type=2#FT88-Bold SDF 1');
     color: rgb(255, 255, 255);
     font-size: 32px;
     justify-content: center;
@@ -43,4 +114,185 @@ Button {
     font-size: 68px;
     margin-bottom: 32px;
     text-shadow: 2px 2px 0 rgb(0, 0, 69);
+}
+
+#hud-container {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    position: relative;
+}
+
+#bars-container {
+    width: 266px;
+    height: 100px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#bars {
+    width: 100%;
+    height: 100%;
+    background-image: url('project://database/Assets/Sprites/UI/healthbar-grouped.png?fileID=21300000&guid=172542bed2db34525adf465e59968591&type=3#healthbar-grouped');
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#waterbar {
+    position: absolute;
+    left: 30.2%;
+    top: 24.22%;
+    width: 66.5%;
+    height: 10%;
+    background-color: rgb(19, 93, 150);
+    transform-origin: left;
+}
+
+#healthbar {
+    position: absolute;
+    left: 30.2%;
+    top: 66%;
+    width: 21.7%;
+    height: 10%;
+    background-color: rgb(123, 65, 120);
+    transform-origin: left;
+}
+
+#timer-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 16px;
+    margin-top: 16px;
+}
+
+#timer-icon {
+    background-image: url('project://database/Assets/Sprites/UI/timer_118x118.png?fileID=21300000&guid=64c41affb4c29447db2f718ee96b0a66&type=3#timer_118x118');
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+}
+
+#time {
+    font-size: 32px;
+}
+
+#pause-bg {
+    background-color: rgba(125, 201, 255, 0.13);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#pause-panel {
+    background-image: url('project://database/Assets/Sprites/UI/settings_window_866x650.png?fileID=21300000&guid=4764f700b95464e768f6c5c3661a6bf5&type=3#settings_window_866x650');
+    -unity-background-scale-mode: scale-to-fit;
+    width: 866px;
+    height: 650px;
+}
+
+#pause-main-container {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    display: flex;
+}
+
+#pause-main-container Button {
+    font-size: 24px;
+    background-image: url('project://database/Assets/Sprites/UI/pause_menu_button_335x99.png?fileID=21300000&guid=fe54febf16cdb46f2991f5cd71925271&type=3#pause_menu_button_335x99');
+    width: 335px;
+    height: 99px;
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 24px;
+}
+
+#pause-main-container Button:hover {
+    background-image: url('project://database/Assets/Sprites/UI/pause_menu_button_hover_335x99.png?fileID=21300000&guid=3e3d79830ed3147ab89bf74ca2d2b968&type=3#pause_menu_button_hover_335x99');
+}
+
+#pause-settings-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: none;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#pause-settings-title {
+    font-size: 64px;
+}
+
+#PauseMenu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#HUD {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#settings-top-container {
+    width: 100%;
+    justify-content: space-between;
+}
+
+#pause-settings-back-button {
+    background-image: url('project://database/Assets/Sprites/UI/x_89x79.png?fileID=21300000&guid=f097e56afbff94ae2855b7e4a8277b9e&type=3#x_89x79');
+    background-color: rgba(0, 0, 0, 0);
+    width: 89px;
+    height: 79px;
+}
+
+#pause-settings-content {
+    flex-direction: row;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-between;
+}
+
+.pause-settings-slider {
+    flex-direction: column;
+}
+
+.pause-settings-slider .unity-slider__label {
+    margin-bottom: 24px;
+    color: rgba(106, 61, 112, 255);
+    font-size: 44px;
+}
+
+.unity-toggle__label {
+    color: rgba(106, 61, 112, 255);
+    font-size: 44px;
+    margin-right: 24px;
+}
+
+#pause-settings-slider-container {
+    margin-right: 40px;
 }

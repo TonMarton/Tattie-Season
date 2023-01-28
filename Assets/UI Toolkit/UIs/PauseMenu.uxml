@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Common.uss?fileID=7433441132597879392&amp;guid=3aaca9a5c0e3040698dfa2cfb42640ee&amp;type=3#Common" />
+    <ui:VisualElement name="pause-bg">
+        <ui:VisualElement name="pause-panel">
+            <ui:GroupBox name="pause-main-container" class="center" style="display: flex;">
+                <ui:Button text="Settings" display-tooltip-when-elided="true" name="pause-settings-button" />
+                <ui:Button text="Quit" display-tooltip-when-elided="true" name="pause-quit-button" />
+                <ui:Button text="Resume" display-tooltip-when-elided="true" name="pause-resume-button" />
+            </ui:GroupBox>
+            <ui:GroupBox name="pause-settings-container" style="display: none; padding-left: 60px; padding-right: 60px; padding-top: 60px; padding-bottom: 60px;">
+                <ui:GroupBox name="settings-top-container" style="flex-direction: row;">
+                    <ui:Label text="settings" display-tooltip-when-elided="true" name="pause-settings-title" style="color: rgba(125, 201, 255, 255);" />
+                    <ui:Button display-tooltip-when-elided="true" name="pause-settings-back-button" />
+                </ui:GroupBox>
+                <ui:GroupBox name="pause-settings-content" style="width: 100%;">
+                    <ui:GroupBox name="pause-settings-slider-container">
+                        <ui:Slider name="sfx-slider" high-value="20" low-value="-80" show-input-field="false" focusable="true" usage-hints="None" label="sound" class="pause-settings-slider" />
+                        <ui:Slider name="music-slider" label="music" class="pause-settings-slider" />
+                    </ui:GroupBox>
+                    <ui:GroupBox name="pause-settings-toggle-container">
+                        <ui:Toggle label="speed-\nrun\ntimer" name="timer-toggle" />
+                    </ui:GroupBox>
+                </ui:GroupBox>
+            </ui:GroupBox>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
