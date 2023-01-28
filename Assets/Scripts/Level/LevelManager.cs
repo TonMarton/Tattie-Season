@@ -40,6 +40,9 @@ public class LevelManager : MonoBehaviour
 		pauseAction = GameObject.Find("Player").GetComponent<PlayerInput>().actions.FindAction("Pause");
 		pauseAction.performed += GamePausedResumed;
 		timer.isActive = true;
+		UIAudio uiAudio = GameObject.Find("Sound").GetComponentInChildren<UIAudio>();
+		gameUi.pauseMenu.onMusicSliderChanged += uiAudio.SetMusicLvl;
+		gameUi.pauseMenu.onSfxSliderChanged += uiAudio.SetSfxLvl;
 	}
 
 	private void Update()

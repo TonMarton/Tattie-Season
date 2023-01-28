@@ -15,6 +15,69 @@ Button {
     align-items: center;
 }
 
+.unity-toggle__input {
+    width: 69px;
+    height: 69px;
+}
+
+.unity-toggle__checkmark {
+    background-image: url('project://database/Assets/Sprites/UI/toggle_off_69x69.png?fileID=21300000&guid=8765b2647809a4ff282f5943a87a5836&type=3#toggle_off_69x69');
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+}
+
+.unity-toggle > .unity-toggle__input:checked > .unity-toggle__checkmark {
+    background-image: url('project://database/Assets/Sprites/UI/toggle_on_69x69.png?fileID=21300000&guid=81622412817bd402dbe15d35fc338ab0&type=3#toggle_on_69x69');
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+.unity-base-slider--horizontal .unity-base-slider__input {
+    width: 276px;
+    height: 30px;
+}
+
+.unity-base-slider--horizontal {
+    margin-bottom: 40px;
+}
+
+.unity-base-slider__input:focus .unity-base-slider__dragger-border {
+}
+
+.unity-base-slider__dragger {
+    background-image: url('project://database/Assets/Sprites/UI/slider_button_39x78.png?fileID=21300000&guid=39633b3247af8436ab09f6be20e5a9ef&type=3#slider_button_39x78');
+    position: absolute;
+    width: 39px;
+    height: 78px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    top: auto;
+}
+
+.unity-base-slider__tracker {
+    background-image: url('project://database/Assets/Sprites/UI/slider_276x30.png?fileID=21300000&guid=c8af0ec45babb4d4bab57bcdbbd549b4&type=3#slider_276x30');
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.unity-base-field--no-label {
+}
+
 #mainmenu {
     background-image: url('project://database/Assets/Sprites/Backgrounds/winter_background_0107_1748.png?fileID=21300000&guid=4f2b42368771a49a696362cc4ce4b697&type=3#winter_background_0107_1748');
     width: 100%;
@@ -170,13 +233,17 @@ Button {
     position: absolute;
     width: 100%;
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     display: none;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 #pause-settings-title {
-    font-size: 32px;
+    font-size: 64px;
 }
 
 #PauseMenu {
@@ -189,4 +256,43 @@ Button {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+#settings-top-container {
+    width: 100%;
+    justify-content: space-between;
+}
+
+#pause-settings-back-button {
+    background-image: url('project://database/Assets/Sprites/UI/x_89x79.png?fileID=21300000&guid=f097e56afbff94ae2855b7e4a8277b9e&type=3#x_89x79');
+    background-color: rgba(0, 0, 0, 0);
+    width: 89px;
+    height: 79px;
+}
+
+#pause-settings-content {
+    flex-direction: row;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-between;
+}
+
+.pause-settings-slider {
+    flex-direction: column;
+}
+
+.pause-settings-slider .unity-slider__label {
+    margin-bottom: 24px;
+    color: rgba(106, 61, 112, 255);
+    font-size: 44px;
+}
+
+.unity-toggle__label {
+    color: rgba(106, 61, 112, 255);
+    font-size: 44px;
+    margin-right: 24px;
+}
+
+#pause-settings-slider-container {
+    margin-right: 40px;
 }

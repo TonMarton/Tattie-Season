@@ -22,6 +22,7 @@ public class PauseMenu
 	private Button quitButton;
 	private Button resumeButton;
 	private VisualElement settingsPageContainer;
+	private Button settingsBackButton;
 	private Toggle timerToggle;
 	private Slider sfxSlider;
 	private Slider musicSlider;
@@ -54,6 +55,7 @@ public class PauseMenu
 		resumeButton = rootElement.Q<Button>("pause-resume-button");
 
 		settingsPageContainer = rootElement.Q<VisualElement>("pause-settings-container");
+		settingsBackButton = rootElement.Q<Button>("pause-settings-back-button");
 		timerToggle = rootElement.Q<Toggle>("timer-toggle");
 		timerToggle.value = shouldShowTimer;
 		sfxSlider = rootElement.Q<Slider>("sfx-slider");
@@ -78,6 +80,7 @@ public class PauseMenu
 		resumeButton.clickable.clicked += this.resumeGameCallback.Invoke;
 		settingsButton.clickable.clicked += () => ChangePage(PauseMenuPage.SettingsPage);
 		quitButton.clickable.clicked += () => this.goToMainMenuCallback.Invoke();
+		settingsBackButton.clickable.clicked += () => this.ChangePage(PauseMenuPage.MainPage);
 		timerToggle.RegisterValueChangedCallback(OnTimerToggleValueChanged);
 		sfxSlider.RegisterValueChangedCallback(OnSfxSliderValueChanged);
 		musicSlider.RegisterValueChangedCallback(OnMusicSliderValueChanged);
@@ -127,6 +130,7 @@ public class PauseMenu
 		resumeButton.clickable.clicked -= resumeGameCallback.Invoke;
 		settingsButton.clickable.clicked -= () => ChangePage(PauseMenuPage.SettingsPage);
 		quitButton.clickable.clicked -= () => goToMainMenuCallback.Invoke();
+		settingsBackButton.clickable.clicked -= () => this.ChangePage(PauseMenuPage.MainPage);
 		timerToggle.UnregisterValueChangedCallback(OnTimerToggleValueChanged);
 		sfxSlider.UnregisterValueChangedCallback(OnSfxSliderValueChanged);
 		musicSlider.UnregisterValueChangedCallback(OnMusicSliderValueChanged);
