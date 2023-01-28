@@ -3,5 +3,8 @@
     <ui:Template name="PauseMenu" src="project://database/Assets/UI%20Toolkit/UIs/PauseMenu.uxml?fileID=9197481963319205126&amp;guid=bdb9678386dc64b848e0dc8c951827d8&amp;type=3#PauseMenu" />
     <Style src="project://database/Assets/UI%20Toolkit/Common.uss?fileID=7433441132597879392&amp;guid=3aaca9a5c0e3040698dfa2cfb42640ee&amp;type=3#Common" />
     <ui:Instance template="HUD" name="HUD" />
-    <ui:Instance template="PauseMenu" name="PauseMenu" />
+    <ui:Instance template="PauseMenu" name="PauseMenu">
+        <AttributeOverrides element-name="sfx-slider" high-value="0" />
+        <AttributeOverrides element-name="music-slider" low-value="-80" high-value="0" />
+    </ui:Instance>
 </ui:UXML>

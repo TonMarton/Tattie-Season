@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PauseMenu
@@ -115,6 +116,7 @@ public class PauseMenu
 
 	private void OnMusicSliderValueChanged(ChangeEvent<float> change)
 	{
+
 		onMusicSliderChanged?.Invoke(change.newValue);
 	}
 
